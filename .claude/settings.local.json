@@ -1,0 +1,32 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python -c \":*)",
+      "Bash(npm create:*)",
+      "Bash(npx create-vite@latest testformatter-temp --template react-ts)",
+      "Bash(cp -r /d/MyProjects/testformatter-temp/* /d/MyProjects/testformatter.uz/)",
+      "Bash(cp /d/MyProjects/testformatter-temp/.gitignore /d/MyProjects/testformatter.uz/)",
+      "Bash(rm -rf /d/MyProjects/testformatter-temp)",
+      "Bash(npm install:*)",
+      "Bash(npx tsc:*)",
+      "Bash(npx vite:*)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(sed -i 's/from-indigo-400 via-violet-400 to-purple-400/from-blue-400 via-cyan-400 to-teal-400/g' src/App.tsx)",
+      "Bash(sed -i 's/from-indigo-600 to-violet-600/from-blue-600 to-cyan-600/g' src/components/ui/Button.tsx src/components/layout/Header.tsx src/components/ui/LanguageSwitcher.tsx)",
+      "Bash(sed -i 's/shadow-indigo-500\\\\/30/shadow-blue-500\\\\/30/g' src/components/ui/Button.tsx src/components/ui/LanguageSwitcher.tsx)",
+      "Bash(sed -i 's/shadow-indigo-700\\\\/30/shadow-blue-700\\\\/30/g' src/components/ui/Button.tsx)",
+      "Bash(sed -i 's/hover:from-indigo-500 hover:to-violet-500/hover:from-blue-500 hover:to-cyan-500/g' src/components/ui/Button.tsx)",
+      "Bash(sed -i 's/active:from-indigo-700 active:to-violet-700/active:from-blue-700 active:to-cyan-700/g' src/components/ui/Button.tsx)",
+      "Bash(sed -i 's/dark:from-indigo-400 dark:to-violet-400/dark:from-blue-400 dark:to-cyan-400/g' src/components/layout/Header.tsx)",
+      "Bash(sed -i 's/text-indigo-300/text-cyan-300/g' src/components/ui/ThemeToggle.tsx)",
+      "Bash(sed -i 's/shadow-indigo-500\\\\/5/shadow-blue-500\\\\/5/g' src/components/upload/FileInfo.tsx)",
+      "Bash(sed -i 's/bg-violet-100 text-violet-700/bg-cyan-100 text-cyan-700/g' src/components/upload/FileInfo.tsx)",
+      "Bash(sed -i 's/bg-violet-500\\\\/20 dark:text-violet-300/bg-cyan-500\\\\/20 dark:text-cyan-300/g' src/components/upload/FileInfo.tsx)",
+      "Bash(sed -i 's/to-violet-600/to-cyan-600/g' src/components/convert/FormatSelector.tsx)",
+      "Bash(find /d/MyProjects/testformatter.uz/src -type f \\\\\\(-name *.ts -o -name *.tsx -o -name *.js -o -name *.jsx \\\\\\))",
+      "Bash(mkdir -p \"D:/MyProjects/testformatter.uz/public/templates\")",
+      "Bash(cp \"C:/Users/hp/Downloads/KahootQuizTemplate.xlsx\" \"D:/MyProjects/testformatter.uz/public/templates/KahootQuizTemplate.xlsx\")",
+      "Bash(gh auth:*)"
+    ]
+  }
+}
