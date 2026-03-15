@@ -51,9 +51,7 @@ function App() {
                 className="text-3d-hero font-['Outfit',sans-serif] text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight mb-4"
                 data-text={t('app.title')}
               >
-                <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-500 dark:from-blue-400 dark:via-cyan-400 dark:to-blue-500 bg-clip-text text-transparent">
-                  {t('app.title')}
-                </span>
+                <span>{t('app.title')}</span>
               </h1>
               <p className="text-lg sm:text-xl text-slate-500 dark:text-white/50 max-w-2xl mx-auto mb-4">
                 {t('app.subtitle')}
