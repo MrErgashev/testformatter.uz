@@ -91,5 +91,10 @@
   "edit.addAnswer": "Add answer",
   "edit.correctAnswer": "Correct answer",
   "edit.questionText": "Question text",
-  "edit.answerText": "Answer text"
+  "edit.answerText": "Answer text",
+
+  "autoNumber.title": "Questions are not numbered",
+  "autoNumber.description": "Your file contains unnumbered questions. The platform can number them automatically, but errors may occur. We recommend reviewing the result.",
+  "autoNumber.confirm": "Continue",
+  "autoNumber.cancel": "Cancel"
 }

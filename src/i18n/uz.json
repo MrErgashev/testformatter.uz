@@ -91,5 +91,10 @@
   "edit.addAnswer": "Javob qo'shish",
   "edit.correctAnswer": "To'g'ri javob",
   "edit.questionText": "Savol matni",
-  "edit.answerText": "Javob matni"
+  "edit.answerText": "Javob matni",
+
+  "autoNumber.title": "Savollar raqamlanmagan",
+  "autoNumber.description": "Faylingizda savollar raqamsiz. Platforma avtomatik raqamlay oladi, lekin xatoliklar bo'lishi mumkin. Natijani ko'rib chiqishni tavsiya qilamiz.",
+  "autoNumber.confirm": "Davom etish",
+  "autoNumber.cancel": "Bekor qilish"
 }

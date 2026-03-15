@@ -6,6 +6,7 @@ import { useAppStore } from '../../store/app-store';
 import { readFile } from '../../lib/file-reader';
 import { parseTestText } from '../../lib/parser';
 import { postprocessParseResult } from '../../utils/question-postprocess';
+import { detectUnnumberedQuestions, autoNumberQuestions } from '../../utils/auto-number';
 import { FileInfo } from './FileInfo';
 
 const ACCEPTED_TYPES = '.txt,.doc,.docx';
@@ -32,6 +33,7 @@ export function DropZone() {
   const inputRef = useRef<HTMLInputElement>(null);
   const [isDragOver, setIsDragOver] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+  const [unnumberedText, setUnnumberedText] = useState<string | null>(null);
 
   const file = useAppStore((s) => s.file);
   const isLoading = useAppStore((s) => s.isLoading);
@@ -41,6 +43,7 @@ export function DropZone() {
   const setParseResult = useAppStore((s) => s.setParseResult);
   const setSplitCount = useAppStore((s) => s.setSplitCount);
   const setError = useAppStore((s) => s.setError);
+  const reset = useAppStore((s) => s.reset);
 
   const processFile = useCallback(
     async (selectedFile: File) => {
@@ -61,8 +64,21 @@ export function DropZone() {
       setIsLoading(true);
       try {
         const text = await readFile(selectedFile);
+
+        // Detect unnumbered questions and show confirmation dialog
+        if (detectUnnumberedQuestions(text)) {
+          setUnnumberedText(text);
+          return;
+        }
+
         const rawResult = parseTestText(text);
         const { result, splitCount } = postprocessParseResult(rawResult);
+
+        if (result.questions.length === 0) {
+          setError(t('errors.emptyFile'));
+          return;
+        }
+
         setParseResult(result);
         setSplitCount(splitCount);
       } catch (err: unknown) {
@@ -113,6 +129,87 @@ export function DropZone() {
   const handleClick = () => {
     inputRef.current?.click();
   };
+
+  const handleAutoNumber = useCallback(() => {
+    if (!unnumberedText) return;
+    const numberedText = autoNumberQuestions(unnumberedText);
+    setUnnumberedText(null);
+
+    const rawResult = parseTestText(numberedText);
+    const { result, splitCount } = postprocessParseResult(rawResult);
+
+    if (result.questions.length === 0) {
+      setError(t('errors.emptyFile'));
+      return;
+    }
+
+    setParseResult(result);
+    setSplitCount(splitCount);
+  }, [unnumberedText, setParseResult, setSplitCount, setError, t]);
+
+  const handleCancelAutoNumber = useCallback(() => {
+    setUnnumberedText(null);
+    reset();
+  }, [reset]);
+
+  // Unnumbered questions detected — show confirmation dialog
+  if (unnumberedText) {
+    return (
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+        className="glass-strong neo-raised rounded-2xl p-8 text-center"
+      >
+        <div className="w-14 h-14 mx-auto mb-5 rounded-full bg-amber-500/10 dark:bg-amber-500/15 flex items-center justify-center">
+          <svg className="w-7 h-7 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
+          </svg>
+        </div>
+
+        <h3
+          className="text-lg font-semibold text-slate-800 dark:text-white/90 mb-2"
+          style={{ fontFamily: "'Outfit', sans-serif" }}
+        >
+          {t('autoNumber.title')}
+        </h3>
+
+        <p
+          className="text-sm text-slate-500 dark:text-white/50 mb-8 max-w-md mx-auto leading-relaxed"
+          style={{ fontFamily: "'DM Sans', sans-serif" }}
+        >
+          {t('autoNumber.description')}
+        </p>
+
+        <div className="flex gap-3 justify-center">
+          <button
+            onClick={handleCancelAutoNumber}
+            className={cn(
+              'px-5 py-2.5 rounded-xl text-sm font-medium transition-all duration-200',
+              'text-slate-600 dark:text-white/60',
+              'hover:bg-slate-100 dark:hover:bg-white/5',
+              'active:scale-95'
+            )}
+            style={{ fontFamily: "'DM Sans', sans-serif" }}
+          >
+            {t('autoNumber.cancel')}
+          </button>
+          <button
+            onClick={handleAutoNumber}
+            className={cn(
+              'px-5 py-2.5 rounded-xl text-sm font-medium transition-all duration-200',
+              'bg-blue-500 text-white shadow-lg shadow-blue-500/25',
+              'hover:bg-blue-600 hover:shadow-blue-500/40',
+              'active:scale-95'
+            )}
+            style={{ fontFamily: "'DM Sans', sans-serif" }}
+          >
+            {t('autoNumber.confirm')}
+          </button>
+        </div>
+      </motion.div>
+    );
+  }
 
   // File already loaded — show FileInfo
   if (file && !isLoading) {
