@@ -10,6 +10,7 @@ interface AppState {
   theme: Theme;
   language: Language;
   showSuccess: boolean;
+  splitCount: number;
 
   setFile: (file: File | null) => void;
   setParseResult: (result: ParseResult | null) => void;
@@ -19,6 +20,7 @@ interface AppState {
   setTheme: (theme: Theme) => void;
   setLanguage: (lang: Language) => void;
   setShowSuccess: (show: boolean) => void;
+  setSplitCount: (count: number) => void;
   reset: () => void;
 }
 
@@ -37,6 +39,7 @@ export const useAppStore = create<AppState>((set) => ({
   theme: getInitialTheme(),
   language: (localStorage.getItem('testformatter_lang') as Language) || 'uz',
   showSuccess: false,
+  splitCount: 0,
 
   setFile: (file) => set({ file, error: null, showSuccess: false }),
   setParseResult: (parseResult) => set({ parseResult }),
@@ -52,5 +55,6 @@ export const useAppStore = create<AppState>((set) => ({
     set({ language });
   },
   setShowSuccess: (showSuccess) => set({ showSuccess }),
-  reset: () => set({ file: null, parseResult: null, error: null, showSuccess: false }),
+  setSplitCount: (splitCount) => set({ splitCount }),
+  reset: () => set({ file: null, parseResult: null, error: null, showSuccess: false, splitCount: 0 }),
 }));
