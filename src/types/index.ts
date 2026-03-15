@@ -35,3 +35,4 @@ export interface ConversionRecord {
 export type OutputFormat = 'hemis' | 'kahoot';
 export type Language = 'uz' | 'ru' | 'en';
 export type Theme = 'light' | 'dark';
+export type CurrentView = 'app' | 'guide';

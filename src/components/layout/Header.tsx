@@ -1,9 +1,14 @@
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { cn } from '../../utils/cn';
+import { useAppStore } from '../../store/app-store';
 import { LanguageSwitcher } from '../ui/LanguageSwitcher';
 import { ThemeToggle } from '../ui/ThemeToggle';
 
 export function Header() {
+  const { t } = useTranslation();
+  const { currentView, setCurrentView } = useAppStore();
+
   return (
     <motion.header
       initial={{ opacity: 0, y: -20 }}
@@ -19,7 +24,7 @@ export function Header() {
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between">
         {/* Logo */}
-        <div className="flex cursor-pointer items-center gap-2.5" onClick={() => window.location.reload()}>
+        <div className="flex cursor-pointer items-center gap-2.5" onClick={() => setCurrentView('app')}>
           <div
             className="relative flex items-center justify-center rounded-xl p-2.5"
             style={{
@@ -64,6 +69,24 @@ export function Header() {
 
         {/* Right controls */}
         <div className="flex items-center gap-2">
+          {/* Guide button */}
+          <motion.button
+            className={cn(
+              'inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium cursor-pointer',
+              'transition-colors duration-150',
+              currentView === 'guide'
+                ? 'bg-blue-500/15 dark:bg-blue-400/10 text-blue-600 dark:text-blue-400'
+                : 'text-slate-600 dark:text-white/60 hover:bg-white/50 dark:hover:bg-white/5'
+            )}
+            whileTap={{ scale: 0.97 }}
+            onClick={() => setCurrentView(currentView === 'guide' ? 'app' : 'guide')}
+          >
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+            </svg>
+            <span className="hidden sm:inline">{t('guide.nav')}</span>
+          </motion.button>
+
           <LanguageSwitcher />
           <ThemeToggle />
         </div>
