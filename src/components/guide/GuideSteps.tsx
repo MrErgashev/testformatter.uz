@@ -106,7 +106,7 @@ function PreviewIllustration() {
           <rect
             x="15" y={10 + qi * 50}
             width="210" height="42" rx="8"
-            className="fill-white/60 dark:fill-white/5 stroke-white/30 dark:stroke-white/10"
+            className="fill-slate-50 dark:fill-white/5 stroke-slate-200 dark:stroke-white/10"
             strokeWidth="1"
           />
           {/* Question number */}
@@ -129,12 +129,12 @@ function PreviewIllustration() {
           <rect
             x="52" y={24 + qi * 50}
             width={q.w} height="5" rx="2.5"
-            className="fill-slate-300/60 dark:fill-white/10"
+            className="fill-slate-300 dark:fill-white/10"
           />
           <rect
             x="52" y={33 + qi * 50}
             width={q.w - 40} height="4" rx="2"
-            className="fill-slate-200/60 dark:fill-white/5"
+            className="fill-slate-200 dark:fill-white/5"
           />
           {/* Answer options */}
           {[0, 1, 2, 3].map((ai) => (
@@ -189,7 +189,7 @@ function DownloadIllustration() {
       >
         <rect
           x="10" y="15" width="100" height="100" rx="12"
-          className="fill-blue-500/10 dark:fill-blue-400/5 stroke-blue-400/30 dark:stroke-blue-300/15"
+          className="fill-blue-50 dark:fill-blue-400/5 stroke-blue-300 dark:stroke-blue-300/15"
           strokeWidth="1.5"
         />
         <text
@@ -212,10 +212,10 @@ function DownloadIllustration() {
           .txt
         </text>
         {/* Mini file icon */}
-        <rect x="48" y="80" width="24" height="28" rx="3" className="stroke-blue-400/40 dark:stroke-blue-300/20" strokeWidth="1" fill="none" />
-        <rect x="52" y="90" width="16" height="2" rx="1" className="fill-blue-400/30 dark:fill-blue-300/15" />
-        <rect x="52" y="95" width="12" height="2" rx="1" className="fill-blue-400/30 dark:fill-blue-300/15" />
-        <rect x="52" y="100" width="14" height="2" rx="1" className="fill-blue-400/30 dark:fill-blue-300/15" />
+        <rect x="48" y="80" width="24" height="28" rx="3" className="stroke-blue-300 dark:stroke-blue-300/20" strokeWidth="1" fill="none" />
+        <rect x="52" y="90" width="16" height="2" rx="1" className="fill-blue-300 dark:fill-blue-300/15" />
+        <rect x="52" y="95" width="12" height="2" rx="1" className="fill-blue-300 dark:fill-blue-300/15" />
+        <rect x="52" y="100" width="14" height="2" rx="1" className="fill-blue-300 dark:fill-blue-300/15" />
       </motion.g>
 
       {/* Kahoot card */}
@@ -227,7 +227,7 @@ function DownloadIllustration() {
       >
         <rect
           x="130" y="15" width="100" height="100" rx="12"
-          className="fill-emerald-500/10 dark:fill-emerald-400/5 stroke-emerald-400/30 dark:stroke-emerald-300/15"
+          className="fill-emerald-50 dark:fill-emerald-400/5 stroke-emerald-300 dark:stroke-emerald-300/15"
           strokeWidth="1.5"
         />
         <text
@@ -250,10 +250,10 @@ function DownloadIllustration() {
           .xlsx
         </text>
         {/* Mini spreadsheet icon */}
-        <rect x="168" y="80" width="24" height="28" rx="3" className="stroke-emerald-400/40 dark:stroke-emerald-300/20" strokeWidth="1" fill="none" />
-        <line x1="168" y1="90" x2="192" y2="90" className="stroke-emerald-400/20 dark:stroke-emerald-300/10" strokeWidth="0.8" />
-        <line x1="168" y1="96" x2="192" y2="96" className="stroke-emerald-400/20 dark:stroke-emerald-300/10" strokeWidth="0.8" />
-        <line x1="180" y1="80" x2="180" y2="108" className="stroke-emerald-400/20 dark:stroke-emerald-300/10" strokeWidth="0.8" />
+        <rect x="168" y="80" width="24" height="28" rx="3" className="stroke-emerald-300 dark:stroke-emerald-300/20" strokeWidth="1" fill="none" />
+        <line x1="168" y1="90" x2="192" y2="90" className="stroke-emerald-300 dark:stroke-emerald-300/10" strokeWidth="0.8" />
+        <line x1="168" y1="96" x2="192" y2="96" className="stroke-emerald-300 dark:stroke-emerald-300/10" strokeWidth="0.8" />
+        <line x1="180" y1="80" x2="180" y2="108" className="stroke-emerald-300 dark:stroke-emerald-300/10" strokeWidth="0.8" />
       </motion.g>
 
       {/* Download arrow */}
