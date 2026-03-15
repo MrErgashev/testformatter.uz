@@ -9,6 +9,13 @@ import { postprocessParseResult } from '../../utils/question-postprocess';
 import { FileInfo } from './FileInfo';
 
 const ACCEPTED_TYPES = '.txt,.doc,.docx';
+const MAX_FILE_SIZE_MB = 50;
+const MAX_FILE_SIZE_BYTES = MAX_FILE_SIZE_MB * 1024 * 1024;
+const VALID_MIMES = [
+  'text/plain',
+  'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+  'application/msword',
+];
 
 function CloudUploadIcon({ className }: { className?: string }) {
   return (
@@ -37,6 +44,19 @@ export function DropZone() {
 
   const processFile = useCallback(
     async (selectedFile: File) => {
+      if (selectedFile.size > MAX_FILE_SIZE_BYTES) {
+        setError(t('errors.fileTooLarge', { max: MAX_FILE_SIZE_MB }));
+        return;
+      }
+
+      const ext = selectedFile.name.split('.').pop()?.toLowerCase();
+      const isValidMime = VALID_MIMES.includes(selectedFile.type) || selectedFile.type === '';
+      const isValidExt = ['txt', 'doc', 'docx'].includes(ext || '');
+      if (!isValidExt || !isValidMime) {
+        setError(t('errors.unsupportedFormat'));
+        return;
+      }
+
       setFile(selectedFile);
       setIsLoading(true);
       try {
