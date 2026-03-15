@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { useAppStore } from '../../store/app-store';
@@ -58,6 +59,23 @@ export function QuestionList() {
   const errorQuestionNumbers = new Set(
     allErrors.filter((e) => e.questionNumber > 0).map((e) => e.questionNumber)
   );
+
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  // Auto-scroll to first error question
+  useEffect(() => {
+    if (errorQuestionNumbers.size === 0 || !scrollContainerRef.current) return;
+    const firstErrorNum = Math.min(...errorQuestionNumbers);
+    const firstErrorIndex = questions.findIndex((q) => q.number === firstErrorNum);
+    if (firstErrorIndex < 0) return;
+
+    const timer = setTimeout(() => {
+      const el = scrollContainerRef.current?.querySelector(`[data-question-index="${firstErrorIndex}"]`);
+      el?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 600); // wait for stagger animation
+    return () => clearTimeout(timer);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [questions.length]);
 
   function getErrorMessage(err: typeof allErrors[number]): string {
     if (err.type === 'no_correct') return t('preview.noCorrectAnswer');
@@ -138,13 +156,14 @@ export function QuestionList() {
 
       {/* Question cards */}
       <motion.div
+        ref={scrollContainerRef}
         variants={containerVariants}
         initial="hidden"
         animate="visible"
         className="flex flex-col gap-4 max-h-[60vh] overflow-y-auto pr-1"
       >
         {questions.map((question, index) => (
-          <motion.div key={index} variants={cardVariants}>
+          <motion.div key={index} variants={cardVariants} data-question-index={index}>
             <QuestionCard
               question={question}
               index={index}

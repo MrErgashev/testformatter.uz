@@ -263,7 +263,7 @@ export function QuestionCard({ question, index, hasError, onUpdate, onDelete }: 
   // Read-only mode (original)
   return (
     <div className={cn(
-      'rounded-xl overflow-hidden border-l-2 group relative',
+      'rounded-xl overflow-hidden border-l-2 relative',
       hasError ? 'border-l-red-500' : 'border-l-blue-500',
       'glass',
       'neo-raised',
@@ -276,8 +276,8 @@ export function QuestionCard({ question, index, hasError, onUpdate, onDelete }: 
           className={cn(
             'absolute top-3 right-3 p-1.5 rounded-lg z-10 cursor-pointer',
             'text-slate-400 dark:text-white/30',
-            'opacity-0 group-hover:opacity-100 transition-opacity',
-            'hover:bg-white/60 dark:hover:bg-white/10 hover:text-blue-500 dark:hover:text-blue-400'
+            'hover:bg-white/60 dark:hover:bg-white/10 hover:text-blue-500 dark:hover:text-blue-400',
+            'transition-colors'
           )}
           title={t('edit.button')}
         >
