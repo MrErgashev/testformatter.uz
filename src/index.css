@@ -193,6 +193,7 @@
   position: relative;
   display: inline-block;
   perspective: 600px;
+  overflow: hidden;
 }
 
 /* Asosiy matn — holografik gradient + neon underglow */
@@ -222,6 +223,9 @@
   left: 1px;
   top: 3px;
   z-index: 0;
+  width: 100%;
+  font: inherit;
+  letter-spacing: inherit;
   background: linear-gradient(
     90deg,
     #2563eb, #06b6d4, #8b5cf6, #ec4899, #3b82f6, #2563eb
