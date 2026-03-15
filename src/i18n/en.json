@@ -35,5 +35,6 @@
   "errors.parseError": "Error reading file",
   "errors.unsupportedFormat": "This format is not supported. Please upload a .txt or .docx file.",
   "errors.docNotSupported": ".doc format is not supported. Please save your file as .docx and upload again.",
-  "errors.emptyFile": "File is empty or no questions found"
+  "errors.emptyFile": "File is empty or no questions found",
+  "preview.autoSplit": "{{count}} merged questions were automatically separated"
 }

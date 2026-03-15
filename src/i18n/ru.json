@@ -35,5 +35,6 @@
   "errors.parseError": "Ошибка при чтении файла",
   "errors.unsupportedFormat": "Этот формат не поддерживается. Загрузите файл .txt или .docx.",
   "errors.docNotSupported": "Формат .doc не поддерживается. Сохраните файл в формате .docx и загрузите снова.",
-  "errors.emptyFile": "Файл пуст или вопросы не найдены"
+  "errors.emptyFile": "Файл пуст или вопросы не найдены",
+  "preview.autoSplit": "{{count}} объединённых вопросов автоматически разделены"
 }

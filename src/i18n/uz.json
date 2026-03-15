@@ -35,5 +35,6 @@
   "errors.parseError": "Faylni o'qishda xatolik yuz berdi",
   "errors.unsupportedFormat": "Bu format qo'llab-quvvatlanmaydi. .txt yoki .docx faylni yuklang.",
   "errors.docNotSupported": ".doc formati qo'llab-quvvatlanmaydi. Iltimos, faylingizni .docx formatida saqlang va qayta yuklang.",
-  "errors.emptyFile": "Fayl bo'sh yoki savollar topilmadi"
+  "errors.emptyFile": "Fayl bo'sh yoki savollar topilmadi",
+  "preview.autoSplit": "{{count}} ta birlashgan savol avtomatik ajratildi"
 }

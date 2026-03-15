@@ -5,6 +5,7 @@ import { cn } from '../../utils/cn';
 import { useAppStore } from '../../store/app-store';
 import { readFile } from '../../lib/file-reader';
 import { parseTestText } from '../../lib/parser';
+import { postprocessParseResult } from '../../utils/question-postprocess';
 import { FileInfo } from './FileInfo';
 
 const ACCEPTED_TYPES = '.txt,.doc,.docx';
@@ -31,6 +32,7 @@ export function DropZone() {
   const setFile = useAppStore((s) => s.setFile);
   const setIsLoading = useAppStore((s) => s.setIsLoading);
   const setParseResult = useAppStore((s) => s.setParseResult);
+  const setSplitCount = useAppStore((s) => s.setSplitCount);
   const setError = useAppStore((s) => s.setError);
 
   const processFile = useCallback(
@@ -39,8 +41,10 @@ export function DropZone() {
       setIsLoading(true);
       try {
         const text = await readFile(selectedFile);
-        const result = parseTestText(text);
+        const rawResult = parseTestText(text);
+        const { result, splitCount } = postprocessParseResult(rawResult);
         setParseResult(result);
+        setSplitCount(splitCount);
       } catch (err: unknown) {
         const message =
           err instanceof Error ? err.message : 'UNKNOWN_ERROR';
@@ -55,7 +59,7 @@ export function DropZone() {
         setIsLoading(false);
       }
     },
-    [setFile, setIsLoading, setParseResult, setError, t]
+    [setFile, setIsLoading, setParseResult, setSplitCount, setError, t]
   );
 
   const handleDrop = useCallback(

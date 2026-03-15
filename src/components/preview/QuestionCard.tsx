@@ -56,7 +56,7 @@ export function QuestionCard({ question, index, hasError }: QuestionCardProps) {
       <div className="px-4 py-3 flex flex-col gap-2">
         {question.answers.map((answer, i) => (
           <motion.div
-            key={answer.letter}
+            key={`${answer.letter}-${i}`}
             custom={i}
             variants={answerVariants}
             initial="hidden"
