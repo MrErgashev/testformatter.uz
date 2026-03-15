@@ -36,6 +36,11 @@
   "errors.unsupportedFormat": "Bu format qo'llab-quvvatlanmaydi. .txt yoki .docx faylni yuklang.",
   "errors.docNotSupported": ".doc formati qo'llab-quvvatlanmaydi. Iltimos, faylingizni .docx formatida saqlang va qayta yuklang.",
   "errors.emptyFile": "Fayl bo'sh yoki savollar topilmadi",
+  "errors.fileTooLarge": "Fayl hajmi juda katta. Maksimal hajm {{max}} MB.",
+  "errors.downloadFailed": "Yuklab olishda xatolik. Qayta urinib ko'ring.",
+  "errors.crashTitle": "Xatolik yuz berdi",
+  "errors.crashMessage": "Kutilmagan xatolik yuz berdi. Qayta urinib ko'ring.",
+  "errors.tryAgain": "Qayta urinish",
   "preview.autoSplit": "{{count}} ta birlashgan savol avtomatik ajratildi",
 
   "guide.nav": "Yo'riqnoma",

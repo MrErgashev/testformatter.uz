@@ -36,6 +36,11 @@
   "errors.unsupportedFormat": "This format is not supported. Please upload a .txt or .docx file.",
   "errors.docNotSupported": ".doc format is not supported. Please save your file as .docx and upload again.",
   "errors.emptyFile": "File is empty or no questions found",
+  "errors.fileTooLarge": "File is too large. Maximum size is {{max}} MB.",
+  "errors.downloadFailed": "Download failed. Please try again.",
+  "errors.crashTitle": "Something went wrong",
+  "errors.crashMessage": "An unexpected error occurred. Please try again.",
+  "errors.tryAgain": "Try Again",
   "preview.autoSplit": "{{count}} merged questions were automatically separated",
 
   "guide.nav": "User Guide",

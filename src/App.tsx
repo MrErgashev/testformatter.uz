@@ -24,14 +24,18 @@ function App() {
     if (currentView === 'guide') {
       window.history.pushState({ view: 'guide' }, '');
     }
-    const handlePopState = () => {
-      if (currentView === 'guide') {
+  }, [currentView]);
+
+  useEffect(() => {
+    const handlePopState = (e: PopStateEvent) => {
+      const state = e.state as { view?: string } | null;
+      if (!state || state.view !== 'guide') {
         setCurrentView('app');
       }
     };
     window.addEventListener('popstate', handlePopState);
     return () => window.removeEventListener('popstate', handlePopState);
-  }, [currentView, setCurrentView]);
+  }, [setCurrentView]);
 
   const hasQuestions = parseResult && parseResult.questions.length > 0;
 

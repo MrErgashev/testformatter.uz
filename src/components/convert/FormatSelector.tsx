@@ -41,7 +41,7 @@ function KahootIcon({ className }: { className?: string }) {
 export function FormatSelector() {
   const { t } = useTranslation();
   const store = useAppStore();
-  const { selectedFormat, setSelectedFormat, parseResult, file } = store;
+  const { selectedFormat, setSelectedFormat, parseResult, file, setError } = store;
   const [isDownloading, setIsDownloading] = useState(false);
   const [showConfetti, setShowConfetti] = useState(false);
 
@@ -66,8 +66,9 @@ export function FormatSelector() {
       store.setShowSuccess(true);
       setShowConfetti(true);
       setTimeout(() => setShowConfetti(false), 3000);
-    } catch {
-      // Error handling can be extended
+    } catch (err: unknown) {
+      const message = err instanceof Error ? err.message : t('errors.downloadFailed');
+      setError(message);
     } finally {
       setIsDownloading(false);
     }
