@@ -1,0 +1,19 @@
+1. O'zbekiston poytaxti qaysi shahar?
+a) Samarqand
+*b) Toshkent
+c) Buxoro
+d) Andijon
+
+2. Bu savolda to'g'ri javob belgilanmagan
+a) Javob 1
+b) Javob 2
+c) Javob 3
+
+3. Bu savolda faqat bitta javob bor
+*a) Yagona javob
+
+4. Quyosh sistemasida nechta sayyora bor?
+a) 6
+*b) 8
+c) 9
+d) 12
