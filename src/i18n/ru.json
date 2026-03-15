@@ -36,5 +36,10 @@
   "errors.unsupportedFormat": "Этот формат не поддерживается. Загрузите файл .txt или .docx.",
   "errors.docNotSupported": "Формат .doc не поддерживается. Сохраните файл в формате .docx и загрузите снова.",
   "errors.emptyFile": "Файл пуст или вопросы не найдены",
+  "errors.fileTooLarge": "Файл слишком большой. Максимальный размер {{max}} МБ.",
+  "errors.downloadFailed": "Ошибка при скачивании. Попробуйте ещё раз.",
+  "errors.crashTitle": "Что-то пошло не так",
+  "errors.crashMessage": "Произошла непредвиденная ошибка. Попробуйте ещё раз.",
+  "errors.tryAgain": "Попробовать снова",
   "preview.autoSplit": "{{count}} объединённых вопросов автоматически разделены"
 }
