@@ -205,7 +205,7 @@
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  animation: gradient-flow 4s ease-in-out infinite;
+  animation: gradient-flow 10s ease-in-out infinite;
 }
 
 .text-3d-hero::after {
@@ -224,7 +224,7 @@
     0 1px 0 rgba(59, 130, 246, 0.25),
     0 2px 0 rgba(59, 130, 246, 0.15),
     0 3px 6px rgba(59, 130, 246, 0.2);
-  animation: gradient-flow 4s ease-in-out infinite;
+  animation: gradient-flow 10s ease-in-out infinite;
 }
 
 :where(.dark, .dark *) .text-3d-hero::after,
