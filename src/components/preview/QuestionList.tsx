@@ -26,6 +26,8 @@ export function QuestionList() {
   const { t } = useTranslation();
   const parseResult = useAppStore((s) => s.parseResult);
   const splitCount = useAppStore((s) => s.splitCount);
+  const updateQuestion = useAppStore((s) => s.updateQuestion);
+  const deleteQuestion = useAppStore((s) => s.deleteQuestion);
 
   if (!parseResult) return null;
 
@@ -147,6 +149,8 @@ export function QuestionList() {
               question={question}
               index={index}
               hasError={errorQuestionNumbers.has(question.number)}
+              onUpdate={(updated) => updateQuestion(index, updated)}
+              onDelete={() => deleteQuestion(index)}
             />
           </motion.div>
         ))}

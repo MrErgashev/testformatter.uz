@@ -81,5 +81,15 @@
   "guide.tips.a4": "100% xavfsiz. Hech qanday fayl serverga yuborilmaydi. Barcha konvertatsiya brauzeringiz ichida amalga oshadi. Biz hech qanday ma'lumotni saqlamaymiz.",
   "guide.tips.q5": "Savollar birlashib qolsa nima qilish kerak?",
   "guide.tips.a5": "Agar bitta savol ichida juda ko'p javob bo'lsa, tizim avtomatik ravishda ularni ajratishga harakat qiladi. Lekin yaxshisi, faylingizda har bir savolni alohida raqamlang.",
-  "guide.tryNow": "Hoziroq sinab ko'ring"
+  "guide.tryNow": "Hoziroq sinab ko'ring",
+
+  "edit.button": "Tahrirlash",
+  "edit.save": "Saqlash",
+  "edit.cancel": "Bekor qilish",
+  "edit.delete": "O'chirish",
+  "edit.deleteConfirm": "Bu savolni o'chirishni xohlaysizmi?",
+  "edit.addAnswer": "Javob qo'shish",
+  "edit.correctAnswer": "To'g'ri javob",
+  "edit.questionText": "Savol matni",
+  "edit.answerText": "Javob matni"
 }
