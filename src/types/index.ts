@@ -10,7 +10,7 @@ export interface ParsedQuestion {
   answers: ParsedAnswer[];
 }
 
-export type ParseErrorType = 'few_answers' | 'no_correct' | 'unexpected_text';
+export type ParseErrorType = 'few_answers' | 'no_correct' | 'unexpected_text' | 'no_question_text' | 'too_many_answers';
 
 export interface ParseError {
   questionNumber: number;

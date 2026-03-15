@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { cn } from '../../utils/cn';
 import type { ParsedQuestion } from '../../types';
 
@@ -18,6 +19,9 @@ const answerVariants = {
 };
 
 export function QuestionCard({ question, index, hasError }: QuestionCardProps) {
+  const { t } = useTranslation();
+  const hasText = question.text.trim().length > 0;
+
   return (
     <div className={cn(
       'rounded-xl overflow-hidden border-l-2',
@@ -38,8 +42,13 @@ export function QuestionCard({ question, index, hasError }: QuestionCardProps) {
         )}>
           #{index + 1}
         </span>
-        <p className="text-sm font-medium text-slate-800 dark:text-white/90 leading-relaxed pt-0.5">
-          {question.text}
+        <p className={cn(
+          'text-sm font-medium leading-relaxed pt-0.5',
+          hasText
+            ? 'text-slate-800 dark:text-white/90'
+            : 'text-red-400 dark:text-red-400/70 italic'
+        )}>
+          {hasText ? question.text : `(${t('preview.noQuestionText')})`}
         </p>
       </div>
 
