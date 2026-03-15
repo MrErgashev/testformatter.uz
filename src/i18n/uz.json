@@ -30,6 +30,7 @@
   "history.clear": "Tozalash",
   "history.empty": "Hali konvertatsiya qilinmagan",
   "history.questions": "{{count}} ta savol",
+  "footer.author": "Muallif",
   "footer.privacy": "Maxfiylik kafolatlangan — barcha ma'lumotlar brauzerda qayta ishlanadi",
   "errors.parseError": "Faylni o'qishda xatolik yuz berdi",
   "errors.unsupportedFormat": "Bu format qo'llab-quvvatlanmaydi. .txt yoki .docx faylni yuklang.",

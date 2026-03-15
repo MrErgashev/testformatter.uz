@@ -30,6 +30,7 @@
   "history.clear": "Очистить",
   "history.empty": "Нет конвертаций",
   "history.questions": "{{count}} вопросов",
+  "footer.author": "Автор",
   "footer.privacy": "Конфиденциальность гарантирована — все данные обрабатываются в браузере",
   "errors.parseError": "Ошибка при чтении файла",
   "errors.unsupportedFormat": "Этот формат не поддерживается. Загрузите файл .txt или .docx.",

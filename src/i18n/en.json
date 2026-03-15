@@ -30,6 +30,7 @@
   "history.clear": "Clear",
   "history.empty": "No conversions yet",
   "history.questions": "{{count}} questions",
+  "footer.author": "Author",
   "footer.privacy": "Privacy guaranteed — all data is processed in your browser",
   "errors.parseError": "Error reading file",
   "errors.unsupportedFormat": "This format is not supported. Please upload a .txt or .docx file.",
