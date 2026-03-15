@@ -18,15 +18,18 @@ export function parseTestText(text: string): ParseResult {
 
     if (currentAnswers.length < 2) {
       errors.push({
-        line: 0,
+        questionNumber: currentQuestion.number,
+        type: 'few_answers',
         message: `Question ${currentQuestion.number}: needs at least 2 answers (found ${currentAnswers.length})`,
+        count: currentAnswers.length,
       });
     }
 
     const hasCorrect = currentAnswers.some((a) => a.isCorrect);
     if (!hasCorrect) {
       errors.push({
-        line: 0,
+        questionNumber: currentQuestion.number,
+        type: 'no_correct',
         message: `Question ${currentQuestion.number}: no correct answer marked`,
       });
     }
@@ -80,7 +83,8 @@ export function parseTestText(text: string): ParseResult {
     // Line doesn't match anything meaningful
     if (!currentQuestion) {
       errors.push({
-        line: lineNum,
+        questionNumber: 0,
+        type: 'unexpected_text',
         message: `Unexpected text: "${trimmed.substring(0, 50)}"`,
       });
     }

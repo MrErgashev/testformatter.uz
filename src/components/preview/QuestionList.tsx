@@ -30,6 +30,16 @@ export function QuestionList() {
 
   const { questions, errors } = parseResult;
 
+  const errorQuestionNumbers = new Set(
+    errors.filter((e) => e.questionNumber > 0).map((e) => e.questionNumber)
+  );
+
+  function getErrorMessage(err: typeof errors[number]): string {
+    if (err.type === 'no_correct') return t('preview.noCorrectAnswer');
+    if (err.type === 'few_answers') return t('preview.fewAnswers');
+    return err.message;
+  }
+
   return (
     <div className="flex flex-col gap-4">
       {/* Header */}
@@ -58,7 +68,7 @@ export function QuestionList() {
               />
             </svg>
             <span className="text-sm font-medium text-amber-700 dark:text-amber-300">
-              {errors.length} {errors.length === 1 ? 'warning' : 'warnings'}
+              {t('preview.warnings', { count: errors.length })}
             </span>
           </div>
           <ul className="space-y-0.5 pl-6">
@@ -67,7 +77,10 @@ export function QuestionList() {
                 key={i}
                 className="text-xs text-amber-600/80 dark:text-amber-400/80 list-disc"
               >
-                Line {err.line}: {err.message}
+                {err.questionNumber > 0
+                  ? `${t('preview.question')} #${err.questionNumber}: `
+                  : ''}
+                {getErrorMessage(err)}
               </li>
             ))}
           </ul>
@@ -83,7 +96,11 @@ export function QuestionList() {
       >
         {questions.map((question, index) => (
           <motion.div key={index} variants={cardVariants}>
-            <QuestionCard question={question} index={index} />
+            <QuestionCard
+              question={question}
+              index={index}
+              hasError={errorQuestionNumbers.has(question.number)}
+            />
           </motion.div>
         ))}
       </motion.div>

@@ -5,6 +5,7 @@ import type { ParsedQuestion } from '../../types';
 interface QuestionCardProps {
   question: ParsedQuestion;
   index: number;
+  hasError?: boolean;
 }
 
 const answerVariants = {
@@ -16,16 +17,25 @@ const answerVariants = {
   }),
 };
 
-export function QuestionCard({ question, index }: QuestionCardProps) {
+export function QuestionCard({ question, index, hasError }: QuestionCardProps) {
   return (
     <div className={cn(
-      'rounded-xl overflow-hidden border-l-2 border-l-blue-500',
+      'rounded-xl overflow-hidden border-l-2',
+      hasError ? 'border-l-red-500' : 'border-l-blue-500',
       'glass',
       'neo-raised',
     )}>
       {/* Question header */}
-      <div className="px-5 py-4 flex items-start gap-3 border-b border-slate-100/50 dark:border-white/5">
-        <span className="shrink-0 inline-flex items-center justify-center h-7 min-w-7 px-2 rounded-full bg-blue-500/15 text-blue-500 dark:text-blue-400 text-xs font-semibold">
+      <div className={cn(
+        'px-5 py-4 flex items-start gap-3 border-b border-slate-100/50 dark:border-white/5',
+        hasError && 'bg-red-50/50 dark:bg-red-500/5'
+      )}>
+        <span className={cn(
+          'shrink-0 inline-flex items-center justify-center h-7 min-w-7 px-2 rounded-full text-xs font-semibold',
+          hasError
+            ? 'bg-red-500/15 text-red-500 dark:text-red-400'
+            : 'bg-blue-500/15 text-blue-500 dark:text-blue-400'
+        )}>
           #{index + 1}
         </span>
         <p className="text-sm font-medium text-slate-800 dark:text-white/90 leading-relaxed pt-0.5">

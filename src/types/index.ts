@@ -10,9 +10,13 @@ export interface ParsedQuestion {
   answers: ParsedAnswer[];
 }
 
+export type ParseErrorType = 'few_answers' | 'no_correct' | 'unexpected_text';
+
 export interface ParseError {
-  line: number;
+  questionNumber: number;
+  type: ParseErrorType;
   message: string;
+  count?: number;
 }
 
 export interface ParseResult {
