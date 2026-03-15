@@ -47,11 +47,10 @@ function App() {
               exit={{ opacity: 0, y: -20, height: 0, marginBottom: 0, overflow: 'hidden' }}
               transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
             >
-              <h1
-                className="text-3d-hero font-['Outfit',sans-serif] text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight mb-4"
-                data-text={t('app.title')}
-              >
-                <span>{t('app.title')}</span>
+              <h1 className="font-['Outfit',sans-serif] text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight mb-4">
+                <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-500 bg-clip-text text-transparent">
+                  {t('app.title')}
+                </span>
               </h1>
               <p className="text-lg sm:text-xl text-slate-500 dark:text-white/50 max-w-2xl mx-auto mb-4">
                 {t('app.subtitle')}
