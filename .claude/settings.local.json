@@ -26,7 +26,19 @@
       "Bash(find /d/MyProjects/testformatter.uz/src -type f \\\\\\(-name *.ts -o -name *.tsx -o -name *.js -o -name *.jsx \\\\\\))",
       "Bash(mkdir -p \"D:/MyProjects/testformatter.uz/public/templates\")",
       "Bash(cp \"C:/Users/hp/Downloads/KahootQuizTemplate.xlsx\" \"D:/MyProjects/testformatter.uz/public/templates/KahootQuizTemplate.xlsx\")",
-      "Bash(gh auth:*)"
+      "Bash(gh auth:*)",
+      "Bash(vercel --version)",
+      "Bash(vercel whoami:*)",
+      "Bash(TEMP=\"C:/Users/hp/AppData/Local/Temp\" TMP=\"C:/Users/hp/AppData/Local/Temp\" vercel whoami)",
+      "Bash(npm run:*)",
+      "mcp__38a4c16c-2e55-46bc-9bf1-12eb7dbce8c5__deploy_to_vercel",
+      "Bash(vercel login:*)",
+      "Bash(TMPDIR=\"$APPDATA/com.vercel.cli/Data\" TEMP=\"$APPDATA/com.vercel.cli/Data\" TMP=\"$APPDATA/com.vercel.cli/Data\" vercel whoami)",
+      "Bash(npx vercel@canary whoami)",
+      "Bash(VERCEL_TELEMETRY_DISABLED=1 vercel whoami)",
+      "Bash(VERCEL_TELEMETRY_DISABLED=1 vercel login --github)",
+      "Bash(npm ls:*)",
+      "Bash(npm view:*)"
     ]
   }
 }
