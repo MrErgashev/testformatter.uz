@@ -40,7 +40,8 @@
       "Bash(npm ls:*)",
       "Bash(npm view:*)",
       "Skill(claude-md-management:revise-claude-md)",
-      "Skill(claude-md-management:revise-claude-md:*)"
+      "Skill(claude-md-management:revise-claude-md:*)",
+      "Bash(find /d/MyProjects/testformatter.uz/src -type f \\\\\\(-name *.ts -o -name *.tsx \\\\\\))"
     ]
   }
 }
