@@ -81,5 +81,15 @@
   "guide.tips.a4": "100% safe. No files are sent to any server. All conversion happens within your browser. We don't store any data.",
   "guide.tips.q5": "What if questions get merged together?",
   "guide.tips.a5": "If a single question has too many answers, the system will try to automatically split them. However, it's best to number each question separately in your source file.",
-  "guide.tryNow": "Try it now"
+  "guide.tryNow": "Try it now",
+
+  "edit.button": "Edit",
+  "edit.save": "Save",
+  "edit.cancel": "Cancel",
+  "edit.delete": "Delete",
+  "edit.deleteConfirm": "Are you sure you want to delete this question?",
+  "edit.addAnswer": "Add answer",
+  "edit.correctAnswer": "Correct answer",
+  "edit.questionText": "Question text",
+  "edit.answerText": "Answer text"
 }

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
+import confetti from 'canvas-confetti';
 import { cn } from '../../utils/cn';
 import { useAppStore } from '../../store/app-store';
 import { generateHemis } from '../../lib/hemis-generator';
@@ -65,6 +66,25 @@ export function FormatSelector() {
       addToHistory(fileName, questionCount, selectedFormat);
       store.setShowSuccess(true);
       setShowConfetti(true);
+
+      // Fire confetti
+      const end = Date.now() + 1500;
+      const colors = ['#3b82f6', '#06b6d4', '#10b981', '#f59e0b', '#8b5cf6'];
+
+      confetti({ particleCount: 80, spread: 70, origin: { y: 0.65 }, colors });
+      setTimeout(() => {
+        confetti({ particleCount: 50, angle: 60, spread: 55, origin: { x: 0, y: 0.65 }, colors });
+        confetti({ particleCount: 50, angle: 120, spread: 55, origin: { x: 1, y: 0.65 }, colors });
+      }, 300);
+
+      const burstInterval = setInterval(() => {
+        if (Date.now() > end) {
+          clearInterval(burstInterval);
+          return;
+        }
+        confetti({ particleCount: 20, spread: 100, origin: { x: Math.random(), y: Math.random() * 0.4 + 0.4 }, colors });
+      }, 400);
+
       setTimeout(() => setShowConfetti(false), 3000);
     } catch (err: unknown) {
       const message = err instanceof Error ? err.message : t('errors.downloadFailed');

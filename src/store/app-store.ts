@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import type { ParseResult, OutputFormat, Theme, Language, CurrentView } from '../types';
+import type { ParseResult, ParsedQuestion, OutputFormat, Theme, Language, CurrentView } from '../types';
 
 interface AppState {
   file: File | null;
@@ -23,6 +23,8 @@ interface AppState {
   setShowSuccess: (show: boolean) => void;
   setSplitCount: (count: number) => void;
   setCurrentView: (view: CurrentView) => void;
+  updateQuestion: (index: number, question: ParsedQuestion) => void;
+  deleteQuestion: (index: number) => void;
   reset: () => void;
 }
 
@@ -60,5 +62,16 @@ export const useAppStore = create<AppState>((set) => ({
   setShowSuccess: (showSuccess) => set({ showSuccess }),
   setSplitCount: (splitCount) => set({ splitCount }),
   setCurrentView: (currentView) => set({ currentView }),
+  updateQuestion: (index, question) => set((state) => {
+    if (!state.parseResult) return state;
+    const questions = [...state.parseResult.questions];
+    questions[index] = question;
+    return { parseResult: { ...state.parseResult, questions } };
+  }),
+  deleteQuestion: (index) => set((state) => {
+    if (!state.parseResult) return state;
+    const questions = state.parseResult.questions.filter((_, i) => i !== index);
+    return { parseResult: { ...state.parseResult, questions } };
+  }),
   reset: () => set({ file: null, parseResult: null, error: null, showSuccess: false, splitCount: 0 }),
 }));
