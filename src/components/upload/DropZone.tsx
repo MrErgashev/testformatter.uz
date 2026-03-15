@@ -126,6 +126,7 @@ export function DropZone() {
         'relative cursor-pointer rounded-2xl p-14 text-center transition-all duration-300',
         'glass-strong',
         'neo-raised',
+        'dropzone-glow',
         isDragOver
           ? '!border-blue-500 !bg-blue-500/5 dark:!bg-blue-500/10'
           : isHovered
