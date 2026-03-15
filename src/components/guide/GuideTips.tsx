@@ -71,6 +71,7 @@ export function GuideTips() {
     { q: 'guide.tips.q3', a: 'guide.tips.a3' },
     { q: 'guide.tips.q4', a: 'guide.tips.a4' },
     { q: 'guide.tips.q5', a: 'guide.tips.a5' },
+    { q: 'guide.tips.q6', a: 'guide.tips.a6' },
   ];
 
   return (
