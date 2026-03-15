@@ -33,7 +33,7 @@ export const ThemeToggle: React.FC = () => {
     <button
       onClick={toggle}
       className={cn(
-        'relative p-2.5 rounded-xl cursor-pointer',
+        'relative p-2 sm:p-2.5 rounded-xl cursor-pointer',
         'glass',
         'hover:scale-105 active:scale-95',
         'transition-all duration-200',

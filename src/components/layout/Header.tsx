@@ -17,7 +17,7 @@ export function Header() {
       className={cn(
         'fixed top-0 left-0 right-0 z-50',
         'glass-strong',
-        'px-6 py-3',
+        'px-3 sm:px-6 py-3',
         'backdrop-blur-xl',
         'border-b border-white/20'
       )}
@@ -68,7 +68,7 @@ export function Header() {
         </div>
 
         {/* Right controls */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1 sm:gap-2">
           {/* Guide button */}
           <motion.button
             className={cn(

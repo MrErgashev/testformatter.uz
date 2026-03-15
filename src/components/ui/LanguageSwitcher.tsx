@@ -34,7 +34,7 @@ export const LanguageSwitcher: React.FC = () => {
             key={lang.code}
             onClick={() => handleChange(lang.code)}
             className={cn(
-              'relative z-10 px-3 py-1.5 text-xs font-semibold rounded-lg',
+              'relative z-10 px-2 sm:px-3 py-1 sm:py-1.5 text-xs font-semibold rounded-lg',
               'font-["DM_Sans",sans-serif]',
               'transition-all duration-200 cursor-pointer select-none',
               isActive
