@@ -216,6 +216,51 @@ export function DropZone() {
         {t('upload.formats')}
       </p>
 
+      {/* Sample files download */}
+      <div
+        className="mt-5 pt-4 border-t border-slate-200/40 dark:border-white/8"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <p
+          className="text-xs text-slate-400 dark:text-white/35 mb-2.5"
+          style={{ fontFamily: "'DM Sans', sans-serif" }}
+        >
+          {t('upload.sampleTitle')}
+        </p>
+        <div className="flex items-center justify-center gap-3">
+          <a
+            href="/samples/namuna.txt"
+            download="namuna.txt"
+            className={cn(
+              'inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all duration-200',
+              'bg-blue-500/10 text-blue-600 dark:bg-blue-500/15 dark:text-blue-300',
+              'hover:bg-blue-500/20 dark:hover:bg-blue-500/25 hover:scale-105'
+            )}
+            style={{ fontFamily: "'DM Sans', sans-serif" }}
+          >
+            <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+            {t('upload.sampleTxt')}
+          </a>
+          <a
+            href="/samples/namuna.docx"
+            download="namuna.docx"
+            className={cn(
+              'inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all duration-200',
+              'bg-emerald-500/10 text-emerald-600 dark:bg-emerald-500/15 dark:text-emerald-300',
+              'hover:bg-emerald-500/20 dark:hover:bg-emerald-500/25 hover:scale-105'
+            )}
+            style={{ fontFamily: "'DM Sans', sans-serif" }}
+          >
+            <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+            {t('upload.sampleDocx')}
+          </a>
+        </div>
+      </div>
+
       {/* Error message (when no file yet) */}
       <AnimatePresence>
         {error && (
