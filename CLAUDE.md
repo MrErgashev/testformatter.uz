@@ -5,7 +5,7 @@
 
 ## Tech Stack
 - **Framework**: React 19 + TypeScript
-- **Build**: Vite 8
+- **Build**: Vite 7
 - **Styling**: Tailwind CSS v4 (`@import "tailwindcss"`, `@theme` block, `@custom-variant`)
 - **State**: Zustand
 - **i18n**: react-i18next (UZ, RU, EN)
@@ -36,6 +36,7 @@ These classes handle dark/light internally via `:where(.dark, .dark *)` selector
 ```
 src/
   App.tsx                          # Main layout, step logic
+  main.tsx                         # App entry point (React root)
   index.css                        # Tailwind config + glass/neo/glow classes
   store/app-store.ts               # Zustand store
   types/index.ts                   # TypeScript types
@@ -72,6 +73,11 @@ src/
 - **Use auto-switching glass/neo classes** — do NOT use `dark:glass` or `dark:neo-raised` as Tailwind variants
 - **Accent color**: blue-500/blue-600 for interactive elements, emerald for Kahoot/success states
 - **Responsive**: support 375px–1440px
+
+## Build Notes
+- Tailwind CSS is integrated via `@tailwindcss/vite` plugin (not PostCSS)
+- Vite was downgraded from v8 to v7 for `@tailwindcss/vite` compatibility
+- Always run `npm run build` to verify no TypeScript errors before committing
 
 ## Commands
 ```bash

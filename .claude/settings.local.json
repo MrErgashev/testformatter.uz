@@ -38,7 +38,9 @@
       "Bash(VERCEL_TELEMETRY_DISABLED=1 vercel whoami)",
       "Bash(VERCEL_TELEMETRY_DISABLED=1 vercel login --github)",
       "Bash(npm ls:*)",
-      "Bash(npm view:*)"
+      "Bash(npm view:*)",
+      "Skill(claude-md-management:revise-claude-md)",
+      "Skill(claude-md-management:revise-claude-md:*)"
     ]
   }
 }

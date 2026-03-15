@@ -18,17 +18,35 @@ export function Header() {
       <div className="mx-auto flex max-w-7xl items-center justify-between">
         {/* Logo */}
         <div className="flex items-center gap-2.5">
-          <div className="flex items-center justify-center rounded-xl bg-blue-500/15 dark:bg-blue-500/20 p-2 backdrop-blur-sm">
+          <div
+            className="relative flex items-center justify-center rounded-xl p-2.5"
+            style={{
+              background: 'linear-gradient(145deg, #3b82f6, #06b6d4)',
+              boxShadow: '3px 3px 8px rgba(0,0,0,0.2), -1px -1px 4px rgba(255,255,255,0.15), inset 0 1px 1px rgba(255,255,255,0.3), inset 0 -1px 2px rgba(0,0,0,0.15)',
+            }}
+          >
             <svg
-              className="h-5 w-5 text-blue-400 dark:text-blue-400"
+              className="h-5 w-5"
               viewBox="0 0 24 24"
               fill="none"
-              stroke="currentColor"
-              strokeWidth={2.5}
-              strokeLinecap="round"
-              strokeLinejoin="round"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+              <defs>
+                <linearGradient id="bolt-fill" x1="6" y1="2" x2="18" y2="22" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stopColor="#ffffff" />
+                  <stop offset="100%" stopColor="rgba(255,255,255,0.75)" />
+                </linearGradient>
+                <filter id="bolt-shadow">
+                  <feDropShadow dx="0.5" dy="1" stdDeviation="0.5" floodColor="rgba(0,0,0,0.3)" />
+                </filter>
+              </defs>
+              <path
+                d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"
+                fill="url(#bolt-fill)"
+                stroke="rgba(255,255,255,0.5)"
+                strokeWidth="0.5"
+                filter="url(#bolt-shadow)"
+              />
             </svg>
           </div>
           <span
