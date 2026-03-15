@@ -7,7 +7,7 @@ import { ThemeToggle } from '../ui/ThemeToggle';
 
 export function Header() {
   const { t } = useTranslation();
-  const { currentView, setCurrentView } = useAppStore();
+  const { currentView, setCurrentView, reset } = useAppStore();
 
   return (
     <motion.header
@@ -24,7 +24,7 @@ export function Header() {
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between">
         {/* Logo */}
-        <div className="flex cursor-pointer items-center gap-2.5" onClick={() => setCurrentView('app')}>
+        <div className="flex cursor-pointer items-center gap-2.5" onClick={() => { reset(); setCurrentView('app'); }}>
           <div
             className="relative flex items-center justify-center rounded-xl p-2.5"
             style={{
