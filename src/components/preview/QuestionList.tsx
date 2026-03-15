@@ -30,13 +30,37 @@ export function QuestionList() {
 
   const { questions, errors } = parseResult;
 
+  // UI-level validation: check for issues the parser doesn't catch
+  const uiWarnings: typeof errors = [];
+  for (const q of questions) {
+    if (!q.text.trim()) {
+      uiWarnings.push({
+        questionNumber: q.number,
+        type: 'no_question_text',
+        message: `Question ${q.number}: question text not found`,
+      });
+    }
+    if (q.answers.length > 6) {
+      uiWarnings.push({
+        questionNumber: q.number,
+        type: 'too_many_answers',
+        message: `Question ${q.number}: too many answers (${q.answers.length})`,
+        count: q.answers.length,
+      });
+    }
+  }
+
+  const allErrors = [...errors, ...uiWarnings];
+
   const errorQuestionNumbers = new Set(
-    errors.filter((e) => e.questionNumber > 0).map((e) => e.questionNumber)
+    allErrors.filter((e) => e.questionNumber > 0).map((e) => e.questionNumber)
   );
 
-  function getErrorMessage(err: typeof errors[number]): string {
+  function getErrorMessage(err: typeof allErrors[number]): string {
     if (err.type === 'no_correct') return t('preview.noCorrectAnswer');
     if (err.type === 'few_answers') return t('preview.fewAnswers');
+    if (err.type === 'no_question_text') return t('preview.noQuestionText');
+    if (err.type === 'too_many_answers') return t('preview.tooManyAnswers', { count: err.count });
     return err.message;
   }
 
@@ -53,7 +77,7 @@ export function QuestionList() {
       </div>
 
       {/* Error banner */}
-      {errors.length > 0 && (
+      {allErrors.length > 0 && (
         <div className="rounded-xl border border-amber-200 dark:border-amber-500/30 bg-amber-50 dark:bg-amber-500/10 px-4 py-3">
           <div className="flex items-center gap-2 mb-1.5">
             <svg
@@ -68,11 +92,11 @@ export function QuestionList() {
               />
             </svg>
             <span className="text-sm font-medium text-amber-700 dark:text-amber-300">
-              {t('preview.warnings', { count: errors.length })}
+              {t('preview.warnings', { count: allErrors.length })}
             </span>
           </div>
           <ul className="space-y-0.5 pl-6">
-            {errors.map((err, i) => (
+            {allErrors.map((err, i) => (
               <li
                 key={i}
                 className="text-xs text-amber-600/80 dark:text-amber-400/80 list-disc"
