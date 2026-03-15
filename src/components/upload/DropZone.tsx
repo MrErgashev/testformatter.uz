@@ -123,7 +123,7 @@ export function DropZone() {
       animate={isDragOver ? { scale: 1.02 } : { scale: 1 }}
       transition={{ type: 'spring', stiffness: 300, damping: 20 }}
       className={cn(
-        'relative cursor-pointer rounded-2xl p-14 text-center transition-all duration-300',
+        'relative cursor-pointer rounded-2xl py-8 px-6 text-center transition-all duration-300',
         'glass-strong',
         'neo-raised',
         'dropzone-glow',
@@ -178,14 +178,14 @@ export function DropZone() {
       </AnimatePresence>
 
       {/* Upload icon with floating animation */}
-      <div className="mb-6 flex justify-center">
+      <div className="mb-4 flex justify-center">
         <motion.div
           animate={{ y: [0, -6, 0] }}
           transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
         >
           <CloudUploadIcon
             className={cn(
-              'h-20 w-20 transition-colors duration-300',
+              'h-12 w-12 transition-colors duration-300',
               isDragOver || isHovered
                 ? 'text-blue-500 dark:text-blue-400 drop-shadow-[0_0_12px_rgba(59,130,246,0.4)]'
                 : 'text-slate-300 dark:text-white/20'
@@ -210,7 +210,7 @@ export function DropZone() {
         </span>
       </p>
       <p
-        className="mt-4 text-xs text-slate-400 dark:text-white/30"
+        className="mt-2 text-xs text-slate-400 dark:text-white/30"
         style={{ fontFamily: "'DM Sans', sans-serif" }}
       >
         {t('upload.formats')}
@@ -218,11 +218,11 @@ export function DropZone() {
 
       {/* Sample files download */}
       <div
-        className="mt-5 pt-4 border-t border-slate-200/40 dark:border-white/8"
+        className="mt-3 pt-3 border-t border-slate-200/40 dark:border-white/8"
         onClick={(e) => e.stopPropagation()}
       >
         <p
-          className="text-xs text-slate-400 dark:text-white/35 mb-2.5"
+          className="text-xs text-slate-400 dark:text-white/35 mb-2"
           style={{ fontFamily: "'DM Sans', sans-serif" }}
         >
           {t('upload.sampleTitle')}
