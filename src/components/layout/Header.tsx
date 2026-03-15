@@ -17,7 +17,7 @@ export function Header() {
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between">
         {/* Logo */}
-        <div className="flex items-center gap-2.5">
+        <div className="flex cursor-pointer items-center gap-2.5" onClick={() => window.location.reload()}>
           <div
             className="relative flex items-center justify-center rounded-xl p-2.5"
             style={{
