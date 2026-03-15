@@ -1,9 +1,12 @@
+import { useTranslation } from 'react-i18next';
+
 export function Footer() {
+  const { t } = useTranslation();
   return (
     <footer className="border-t border-slate-200/50 dark:border-white/5 py-8 text-center">
       <div className="space-y-1" style={{ fontFamily: "'DM Sans', sans-serif" }}>
         <p className="text-sm font-medium text-slate-600 dark:text-white/70">
-          Muallif: Ergashev Muhammadsodiq
+          {t('footer.author')}: Ergashev Muhammadsodiq
         </p>
         <p className="text-sm text-slate-400 dark:text-white/40">
           Tel:{' '}
