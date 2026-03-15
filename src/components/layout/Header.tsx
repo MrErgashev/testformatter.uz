@@ -11,8 +11,10 @@ export function Header() {
       transition={{ duration: 0.5, ease: 'easeOut' }}
       className={cn(
         'fixed top-0 left-0 right-0 z-50',
-        'glass',
-        'px-6 py-3'
+        'glass-strong',
+        'px-6 py-3',
+        'backdrop-blur-xl',
+        'border-b border-white/20'
       )}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between">
