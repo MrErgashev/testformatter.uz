@@ -91,5 +91,10 @@
   "edit.addAnswer": "Добавить ответ",
   "edit.correctAnswer": "Правильный ответ",
   "edit.questionText": "Текст вопроса",
-  "edit.answerText": "Текст ответа"
+  "edit.answerText": "Текст ответа",
+
+  "autoNumber.title": "Вопросы не пронумерованы",
+  "autoNumber.description": "В вашем файле вопросы не пронумерованы. Платформа может пронумеровать их автоматически, но возможны ошибки. Рекомендуем проверить результат.",
+  "autoNumber.confirm": "Продолжить",
+  "autoNumber.cancel": "Отмена"
 }
