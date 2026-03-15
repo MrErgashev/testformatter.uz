@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import type { ParseResult, OutputFormat, Theme, Language } from '../types';
+import type { ParseResult, OutputFormat, Theme, Language, CurrentView } from '../types';
 
 interface AppState {
   file: File | null;
@@ -11,6 +11,7 @@ interface AppState {
   language: Language;
   showSuccess: boolean;
   splitCount: number;
+  currentView: CurrentView;
 
   setFile: (file: File | null) => void;
   setParseResult: (result: ParseResult | null) => void;
@@ -21,6 +22,7 @@ interface AppState {
   setLanguage: (lang: Language) => void;
   setShowSuccess: (show: boolean) => void;
   setSplitCount: (count: number) => void;
+  setCurrentView: (view: CurrentView) => void;
   reset: () => void;
 }
 
@@ -40,6 +42,7 @@ export const useAppStore = create<AppState>((set) => ({
   language: (localStorage.getItem('testformatter_lang') as Language) || 'uz',
   showSuccess: false,
   splitCount: 0,
+  currentView: 'app',
 
   setFile: (file) => set({ file, error: null, showSuccess: false }),
   setParseResult: (parseResult) => set({ parseResult }),
@@ -56,5 +59,6 @@ export const useAppStore = create<AppState>((set) => ({
   },
   setShowSuccess: (showSuccess) => set({ showSuccess }),
   setSplitCount: (splitCount) => set({ splitCount }),
+  setCurrentView: (currentView) => set({ currentView }),
   reset: () => set({ file: null, parseResult: null, error: null, showSuccess: false, splitCount: 0 }),
 }));
