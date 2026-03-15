@@ -188,3 +188,67 @@
   animation: glow-rotate 6s ease-in-out infinite;
 }
 
+/* ===== 3D STEP INDICATORS ===== */
+.step-3d-active {
+  background: linear-gradient(135deg, #2563eb 0%, #06b6d4 100%);
+  border: none;
+  box-shadow:
+    0 6px 20px rgba(37, 99, 235, 0.45),
+    0 2px 6px rgba(37, 99, 235, 0.3),
+    inset 0 2px 4px rgba(255, 255, 255, 0.35),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.15);
+}
+
+:where(.dark, .dark *) .step-3d-active,
+.dark .step-3d-active {
+  box-shadow:
+    0 6px 24px rgba(37, 99, 235, 0.5),
+    0 2px 8px rgba(6, 182, 212, 0.3),
+    inset 0 2px 4px rgba(255, 255, 255, 0.25),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.step-3d-completed {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1.5px solid rgba(59, 130, 246, 0.3);
+  box-shadow:
+    4px 4px 12px rgba(166, 180, 200, 0.35),
+    -4px -4px 12px rgba(255, 255, 255, 0.6),
+    inset 0 1px 2px rgba(255, 255, 255, 0.8),
+    inset 0 -1px 2px rgba(166, 180, 200, 0.1);
+}
+
+:where(.dark, .dark *) .step-3d-completed,
+.dark .step-3d-completed {
+  background: rgba(59, 130, 246, 0.12);
+  border: 1.5px solid rgba(59, 130, 246, 0.25);
+  box-shadow:
+    4px 4px 12px rgba(0, 0, 0, 0.4),
+    -4px -4px 12px rgba(255, 255, 255, 0.03),
+    inset 0 1px 2px rgba(255, 255, 255, 0.08),
+    inset 0 -1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.step-3d-future {
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow:
+    inset 3px 3px 8px rgba(166, 180, 200, 0.3),
+    inset -3px -3px 8px rgba(255, 255, 255, 0.7),
+    0 1px 3px rgba(166, 180, 200, 0.15);
+}
+
+:where(.dark, .dark *) .step-3d-future,
+.dark .step-3d-future {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow:
+    inset 3px 3px 8px rgba(0, 0, 0, 0.35),
+    inset -3px -3px 8px rgba(255, 255, 255, 0.03),
+    0 1px 3px rgba(0, 0, 0, 0.2);
+}
+

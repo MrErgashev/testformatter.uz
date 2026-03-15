@@ -68,20 +68,20 @@ export function StepIndicator({ currentStep }: StepIndicatorProps) {
               animate={{ scale: 1, opacity: 1 }}
               transition={{ delay: i * 0.1, duration: 0.3 }}
               className={cn(
-                'relative flex items-center justify-center w-10 h-10 rounded-full transition-all duration-300',
-                isCompleted && 'bg-blue-500/15 border-2 border-blue-500 backdrop-blur-sm',
-                isCurrent && 'bg-gradient-to-r from-blue-600 to-cyan-500 border-2 border-blue-400/50 shadow-lg shadow-blue-500/30',
-                isFuture && 'glass border-2 border-transparent',
+                'relative flex items-center justify-center w-12 h-12 rounded-full transition-all duration-300',
+                isCompleted && 'step-3d-completed',
+                isCurrent && 'step-3d-active',
+                isFuture && 'step-3d-future',
               )}
             >
               {isCompleted ? (
-                <CheckIcon className="w-4 h-4 text-blue-500 dark:text-blue-400" />
+                <CheckIcon className="w-5 h-5 text-blue-500 dark:text-blue-400 drop-shadow-sm" />
               ) : (
                 <StepIcon
                   icon={step.icon}
                   className={cn(
-                    'w-4 h-4',
-                    isCurrent && 'text-white',
+                    'w-5 h-5',
+                    isCurrent && 'text-white drop-shadow-md',
                     isFuture && 'text-slate-400 dark:text-white/40',
                   )}
                 />
