@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
+import { Analytics } from '@vercel/analytics/react';
 import { useAppStore } from './store/app-store';
 import { Header } from './components/layout/Header';
 import { Footer } from './components/layout/Footer';
@@ -147,6 +148,7 @@ function App() {
       </AnimatePresence>
 
       <Footer />
+      <Analytics />
     </div>
   );
 }
