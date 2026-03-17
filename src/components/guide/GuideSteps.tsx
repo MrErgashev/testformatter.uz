@@ -1,4 +1,5 @@
-import { motion } from 'framer-motion';
+import { useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 
 interface StepData {
@@ -14,8 +15,11 @@ interface StepData {
 }
 
 function UploadIllustration() {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, amount: 0.3 });
+
   return (
-    <svg viewBox="0 0 240 160" fill="none" className="w-full h-auto">
+    <svg ref={ref} viewBox="0 0 240 160" fill="none" className="w-full h-auto">
       {/* Dropzone outline */}
       <motion.rect
         x="20" y="10" width="200" height="140" rx="16"
@@ -23,13 +27,13 @@ function UploadIllustration() {
         strokeWidth="2"
         strokeDasharray="8 6"
         initial={{ pathLength: 0 }}
-        animate={{ pathLength: 1 }}
+        animate={inView ? { pathLength: 1 } : { pathLength: 0 }}
         transition={{ duration: 1.5 }}
       />
       {/* Upload cloud icon */}
       <motion.g
         initial={{ y: 10, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
+        animate={inView ? { y: 0, opacity: 1 } : { y: 10, opacity: 0 }}
         transition={{ delay: 0.5, duration: 0.6 }}
       >
         <motion.path
@@ -40,7 +44,7 @@ function UploadIllustration() {
       </motion.g>
       {/* Upload arrow */}
       <motion.g
-        animate={{ y: [0, -5, 0] }}
+        animate={inView ? { y: [0, -5, 0] } : { y: 0 }}
         transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
       >
         <motion.path
@@ -49,7 +53,7 @@ function UploadIllustration() {
           strokeWidth="2.5"
           strokeLinecap="round"
           initial={{ pathLength: 0 }}
-          animate={{ pathLength: 1 }}
+          animate={inView ? { pathLength: 1 } : { pathLength: 0 }}
           transition={{ delay: 1, duration: 0.5 }}
         />
         <motion.path
@@ -60,7 +64,7 @@ function UploadIllustration() {
           strokeLinejoin="round"
           fill="none"
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+          animate={inView ? { opacity: 1 } : { opacity: 0 }}
           transition={{ delay: 1.3 }}
         />
       </motion.g>
@@ -71,7 +75,7 @@ function UploadIllustration() {
         fontSize="11"
         fontFamily="'DM Sans', sans-serif"
         initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
+        animate={inView ? { opacity: 1 } : { opacity: 0 }}
         transition={{ delay: 1.5 }}
       >
         .txt  &middot;  .docx
@@ -81,6 +85,9 @@ function UploadIllustration() {
 }
 
 function PreviewIllustration() {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, amount: 0.3 });
+
   const questions = [
     { w: 160, correct: 1 },
     { w: 140, correct: 2 },
@@ -88,12 +95,12 @@ function PreviewIllustration() {
   ];
 
   return (
-    <svg viewBox="0 0 240 160" fill="none" className="w-full h-auto">
+    <svg ref={ref} viewBox="0 0 240 160" fill="none" className="w-full h-auto">
       {questions.map((q, qi) => (
         <motion.g
           key={qi}
           initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
+          animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
           transition={{ delay: 0.3 + qi * 0.2, duration: 0.5 }}
         >
           {/* Question card */}
@@ -148,7 +155,7 @@ function PreviewIllustration() {
             className="fill-emerald-500/20 stroke-emerald-500 dark:fill-emerald-400/10 dark:stroke-emerald-400"
             strokeWidth="1.5"
             initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
+            animate={inView ? { scale: 1 } : { scale: 0 }}
             transition={{ delay: 0.8 + qi * 0.2, type: 'spring' }}
           />
           <motion.path
@@ -159,7 +166,7 @@ function PreviewIllustration() {
             strokeLinejoin="round"
             fill="none"
             initial={{ pathLength: 0 }}
-            animate={{ pathLength: 1 }}
+            animate={inView ? { pathLength: 1 } : { pathLength: 0 }}
             transition={{ delay: 1 + qi * 0.2, duration: 0.3 }}
           />
         </motion.g>
@@ -169,13 +176,16 @@ function PreviewIllustration() {
 }
 
 function DownloadIllustration() {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, amount: 0.3 });
+
   return (
-    <svg viewBox="0 0 240 160" fill="none" className="w-full h-auto">
+    <svg ref={ref} viewBox="0 0 240 160" fill="none" className="w-full h-auto">
       {/* Two format cards */}
       {/* HEMIS card */}
       <motion.g
         initial={{ opacity: 0, x: -20 }}
-        animate={{ opacity: 1, x: 0 }}
+        animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
         transition={{ delay: 0.3, duration: 0.5 }}
       >
         <rect
@@ -212,7 +222,7 @@ function DownloadIllustration() {
       {/* Kahoot card */}
       <motion.g
         initial={{ opacity: 0, x: 20 }}
-        animate={{ opacity: 1, x: 0 }}
+        animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
         transition={{ delay: 0.5, duration: 0.5 }}
       >
         <rect
@@ -249,7 +259,7 @@ function DownloadIllustration() {
       {/* Download arrow */}
       <motion.g
         initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
+        animate={inView ? { opacity: 1 } : { opacity: 0 }}
         transition={{ delay: 0.8 }}
       >
         <motion.path
@@ -257,7 +267,7 @@ function DownloadIllustration() {
           className="stroke-slate-400 dark:stroke-white/30"
           strokeWidth="2"
           strokeLinecap="round"
-          animate={{ y: [0, 3, 0] }}
+          animate={inView ? { y: [0, 3, 0] } : { y: 0 }}
           transition={{ duration: 1.5, repeat: Infinity }}
         />
         <motion.path
@@ -267,7 +277,7 @@ function DownloadIllustration() {
           strokeLinecap="round"
           strokeLinejoin="round"
           fill="none"
-          animate={{ y: [0, 3, 0] }}
+          animate={inView ? { y: [0, 3, 0] } : { y: 0 }}
           transition={{ duration: 1.5, repeat: Infinity }}
         />
       </motion.g>
@@ -346,7 +356,8 @@ export function GuideSteps() {
                 <motion.div
                   className="inline-flex items-center gap-3 mb-5"
                   initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
                   transition={{ delay: 0.2 }}
                 >
                   <span
@@ -364,7 +375,8 @@ export function GuideSteps() {
                 <motion.h3
                   className="font-['Outfit',sans-serif] text-2xl sm:text-3xl font-bold tracking-tight mb-4 text-slate-800 dark:text-white/90"
                   initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
                   transition={{ delay: 0.3 }}
                 >
                   {t(step.titleKey)}
@@ -374,7 +386,8 @@ export function GuideSteps() {
                 <motion.p
                   className="text-base sm:text-lg text-slate-600 dark:text-white/60 mb-5 leading-relaxed"
                   initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
                   transition={{ delay: 0.4 }}
                 >
                   {t(step.descKey)}
@@ -384,7 +397,8 @@ export function GuideSteps() {
                 <motion.div
                   className="flex items-start gap-3 px-4 py-3 rounded-xl bg-blue-500/5 dark:bg-blue-400/5 border border-blue-500/10 dark:border-blue-400/10"
                   initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
                   transition={{ delay: 0.5 }}
                 >
                   <svg className="w-5 h-5 mt-0.5 text-blue-500 dark:text-blue-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
